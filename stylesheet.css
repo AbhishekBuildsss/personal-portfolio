@@ -185,22 +185,35 @@ html, body {
 }
 
 /* ===== HOME PROFILE IMAGE ===== */
-.home-img{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* ===== HOME PROFILE IMAGE (ABOUT SECTION STYLE MATCH FIX) ===== */
+.home-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.home-img img{
-    width:420px;
-    height:420px;
-     object-fit:cover;
-     object-position:center;
-     border-radius:50%;
-     
+.home-img img {
+    width: 350px;
+    height: 350px;
+    max-width: 80vw;
+    max-height: 80vw;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    transform: scale(1.22); /* Extra inner cyan ring ko crop out karne ke liye */
+    border: 4px solid #0ef !important;
+    box-shadow: 0 0 25px #0ef, 0 0 50px rgba(0, 238, 255, 0.5);
+    transition: 0.4s ease;
+    cursor: pointer;
+    overflow: hidden;
 }
 
+.home-img img:hover {
+    transform: translateY(-10px) scale(1.22);
+    box-shadow: 0 0 35px #0ef, 0 0 70px #0ef;
+}
 /* ===== ANIMATIONS ===== */
 @keyframes slideRight {
     0% { transform: translateX(-100px); opacity: 0; }
