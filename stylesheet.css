@@ -199,8 +199,8 @@ html, body {
 }
 
 .home-img img {
-    width: clamp(420px, 60vw, 450px);
-    height: clamp(420px, 60vw, 450px);
+    width: clamp(240px, 40vw, 360px);
+    height: clamp(240px, 40vw, 360px);
     border-radius: 50%;
     object-fit: cover;
     object-position: center 20%;
