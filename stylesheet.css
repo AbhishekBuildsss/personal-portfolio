@@ -8,9 +8,10 @@
 body {
     color: #ededed;
     background: #081b29;
+    overflow-x: hidden;
 }
 
-/* ===== GLOBAL SECTION HEADING (CENTER ALIGNED) ===== */
+/* ===== GLOBAL SECTION HEADING ===== */
 .heading {
     text-align: center;
     font-size: 55px;
@@ -29,7 +30,7 @@ body {
     left: 0;
     width: 100%;
     padding: 20px 10%;
-    background: transparent;
+    background: #081b29;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +50,7 @@ body {
 
 .navbar a {
     display: inline-block;
-    font-size: 25px;
+    font-size: 20px;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -68,14 +69,14 @@ body {
 .home {
     position: relative;
     width: 100%;
-    justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh;
     background: url('Purple Illustrated Mountain Desktop Wallpaper.png') no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    padding: 70px 10% 0;
+    justify-content: space-between;
+    padding: 120px 10% 50px;
 }
 
 .home-content {
@@ -110,15 +111,17 @@ body {
 }
 
 .home-content p {
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
+    line-height: 1.6;
 }
 
 .home-sci {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .home-sci a {
@@ -146,7 +149,6 @@ body {
     box-shadow: 0 0 20px #0ef;
 }
 
-/* Location Text Under Social Icons */
 .location-text {
     font-size: 1rem;
     color: #a0aec0;
@@ -173,17 +175,28 @@ body {
     opacity: 0;
     animation: slideTop 1s ease forwards;
     animation-delay: 2s;
-    box-shadow: 0 0 5px #0ef,
-                0 0 25px #0ef;
+    box-shadow: 0 0 5px #0ef, 0 0 25px #0ef;
 }
 
 .btn-box:hover {
-    box-shadow: 0 0 5px cyan,
-                0 0 25px cyan, 0 0 50px cyan,
-                0 0 100px cyan, 0 0 200px cyan;
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan;
 }
 
-/* Home Section Profile Image (Inner Border & Duplicate Ring Permanent Fix) */
+/* PROFILE IMAGE CONTAINER */
+.home-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 5px solid #0ef;
+    box-shadow: 0 0 25px #0ef, 0 0 50px #0ef;
+    overflow: hidden;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
 .home-img {
     flex: 1;
     display: flex;
@@ -200,52 +213,29 @@ body {
     box-shadow: 0 0 30px #0ef, 0 0 60px rgba(0, 238, 255, 0.8);
 }
 
+
 /* ===== ANIMATIONS ===== */
 @keyframes slideRight {
-    0% {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0px);
-        opacity: 1;
-    }
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0px); opacity: 1; }
 }
 
 @keyframes slideLeft {
-    0% {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0px);
-        opacity: 1;
-    }
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0px); opacity: 1; }
 }
 
 @keyframes slideTop {
-    0% {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+    0% { transform: translateY(100px); opacity: 0; }
+    100% { transform: translateY(0px); opacity: 1; }
 }
 
 @keyframes slideBottom {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
+    0% { transform: translateY(-100px); opacity: 0; }
+    100% { transform: translateY(0px); opacity: 1; }
 }
 
-/* ===== ABOUT ===== */
+/* ===== ABOUT SECTION ===== */
 .about {
     display: flex;
     justify-content: center;
@@ -310,6 +300,7 @@ body {
     gap: 12px;
     margin: 15px 0;
     font-size: 18px;
+    word-break: break-word;
 }
 
 .about-info p a:hover {
@@ -326,9 +317,9 @@ body {
     margin-top: 30px;
 }
 
-/* ===== SERVICES ===== */
+/* ===== ACHIEVEMENTS SECTION ===== */
 .services {
-    padding: 10rem 9% 5rem;
+    padding: 8rem 9% 5rem;
     background: #081b29;
 }
 
@@ -350,6 +341,7 @@ body {
 .services-box:hover {
     border-color: #81ecec;
     transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
 }
 
 .services-box i {
@@ -365,11 +357,12 @@ body {
 
 .services-box p {
     line-height: 1.6;
+    color: #a0aec0;
 }
 
-/* ===== SKILLS (HOVER LIFT + GLOW ANIMATION) ===== */
+/* ===== SKILLS ===== */
 .skills {
-    padding: 10rem 9% 5rem;
+    padding: 8rem 9% 5rem;
     background: #112e42;
 }
 
@@ -384,9 +377,6 @@ body {
     padding: 2.5rem;
     border-radius: 1rem;
     border-left: 4px solid #81ecec;
-    border-top: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid transparent;
     transition: all 0.4s ease;
     cursor: pointer;
 }
@@ -423,13 +413,13 @@ body {
 
 /* ===== PROJECTS ===== */
 .projects {
-    padding: 10rem 9% 5rem;
+    padding: 8rem 9% 5rem;
     background: #081b29;
 }
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -467,9 +457,9 @@ body {
     line-height: 1.5;
 }
 
-/* ===== CONTACT (INPUT BOX HOVER LIFT + NEON GLOW ADDED) ===== */
+/* ===== CONTACT ===== */
 .contact {
-    padding: 10rem 9% 5rem;
+    padding: 8rem 9% 5rem;
     background: #112e42;
     min-height: 100vh;
 }
@@ -526,4 +516,113 @@ body {
     background: #081b29;
     color: #ccc;
     border-top: 1px solid #112e42;
+}
+
+
+/* ========================================================= */
+/* ===== MOBILE & TABLET RESPONSIVE MEDIA QUERIES ===== */
+/* ========================================================= */
+
+@media (max-width: 991px) {
+    .header {
+        padding: 15px 5%;
+    }
+    
+    .navbar a {
+        font-size: 18px;
+        margin-left: 20px;
+    }
+
+    .home, .about {
+        padding: 100px 5% 50px;
+    }
+
+    .heading {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header Navbar Layout Fix */
+    .header {
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .navbar a {
+        margin-left: 0;
+        font-size: 16px;
+    }
+
+    /* Home Layout Stack Vertically */
+    .home {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        height: auto;
+        gap: 40px;
+    }
+
+    .home-content h1 {
+        font-size: 38px;
+    }
+
+    .home-content h3 {
+        font-size: 24px;
+    }
+
+    .home-sci, .location-text {
+        justify-content: center;
+    }
+
+    .home-img, .about-img {
+        width: 280px;
+        height: 280px;
+    }
+
+    /* About Section Layout Fix */
+    .about {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .about-info p {
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    /* Contact Form Single Column */
+    .contact form .input-box {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-content h1 {
+        font-size: 30px;
+    }
+
+    .home-content p {
+        font-size: 15px;
+    }
+
+    .home-img, .about-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .heading {
+        font-size: 32px;
+    }
 }
