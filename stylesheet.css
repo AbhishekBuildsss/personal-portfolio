@@ -185,17 +185,20 @@ html, body {
 }
 
 /* ===== HOME PROFILE IMAGE ===== */
-.home-img {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.home-img{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.home-img img:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 35px #0ef, 0 0 70px #0ef;
+.home-img img{
+    width:420px;
+    height:420px;
+     object-fit:cover;
+     object-position:center;
+     border-radius:50%;
+     
 }
 
 /* ===== ANIMATIONS ===== */
