@@ -16,7 +16,7 @@ html, body {
 /* ===== GLOBAL SECTION HEADING ===== */
 .heading {
     text-align: center;
-    font-size: 55px;
+    font-size: clamp(28px, 5vw, 55px);
     margin-bottom: 60px;
     color: #fff;
 }
@@ -67,18 +67,19 @@ html, body {
     color: #0ef;
 }
 
-/* ===== HOME SECTION (FIXED HEIGHT & EXTRA PAGE REMOVED) ===== */
+/* ===== HOME SECTION ===== */
 .home {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background: url('Purple Illustrated Mountain Desktop Wallpaper.png') no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px 10% 0;
+    flex-wrap: wrap;
+    padding: 120px 10% 60px;
 }
 
 .home-content {
@@ -86,7 +87,7 @@ html, body {
 }
 
 .home-content h3 {
-    font-size: 32px;
+    font-size: clamp(20px, 3vw, 32px);
     font-weight: 700;
     opacity: 0;
     animation: slideBottom 1s ease forwards;
@@ -104,12 +105,13 @@ html, body {
 }
 
 .home-content h1 {
-    font-size: 52px;
+    font-size: clamp(30px, 5vw, 52px);
     font-weight: 700;
     margin: -3px 0;
     opacity: 0;
     animation: slideRight 1s ease forwards;
     animation-delay: 1s;
+    word-wrap: break-word;
 }
 
 .home-content p {
@@ -159,6 +161,7 @@ html, body {
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-wrap: wrap;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1.8s;
@@ -184,36 +187,34 @@ html, body {
     box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan;
 }
 
-/* ===== HOME PROFILE IMAGE ===== */
-/* ===== HOME PROFILE IMAGE (ABOUT SECTION STYLE MATCH FIX) ===== */
+/* ===== HOME PROFILE IMAGE (FIXED: no more double/extra circle) ===== */
+ 
 .home-img {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    min-width: 250px;
 }
 
 .home-img img {
-    width: 350px;
-    height: 350px;
-    max-width: 80vw;
-    max-height: 80vw;
+    width: clamp(420px, 60vw, 450px);
+    height: clamp(420px, 60vw, 450px);
     border-radius: 50%;
     object-fit: cover;
-    object-position: center top;
-    transform: scale(1.22); /* Extra inner cyan ring ko crop out karne ke liye */
-    border: 4px solid #0ef !important;
+    object-position: center 20%;
+    border: 4px solid #0ef;
     box-shadow: 0 0 25px #0ef, 0 0 50px rgba(0, 238, 255, 0.5);
     transition: 0.4s ease;
     cursor: pointer;
-    overflow: hidden;
 }
 
 .home-img img:hover {
-    transform: translateY(-10px) scale(1.22);
+    transform: translateY(-10px);
     box-shadow: 0 0 35px #0ef, 0 0 70px #0ef;
 }
+
 /* ===== ANIMATIONS ===== */
 @keyframes slideRight {
     0% { transform: translateX(-100px); opacity: 0; }
@@ -242,6 +243,7 @@ html, body {
     align-items: center;
     gap: 70px;
     padding: 100px 10%;
+    flex-wrap: wrap;
     min-height: 100vh;
     background: #0f2d44;
 }
@@ -252,15 +254,16 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
+    min-width: 250px;
 }
 
 .about-img img {
-    width: 350px;
-    height: 350px;
+    width: clamp(220px, 30vw, 350px);
+    height: clamp(220px, 30vw, 350px);
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
-    border: 4px solid #0ef !important;
+    border: 4px solid #0ef;
     box-shadow: 0 0 25px #0ef, 0 0 50px rgba(0, 238, 255, 0.5);
     transition: 0.4s ease;
     cursor: pointer;
@@ -273,16 +276,17 @@ html, body {
 
 .about-content {
     flex: 1.5;
+    min-width: 280px;
 }
 
 .about-content h3 {
     color: #0ef;
-    font-size: 32px;
+    font-size: clamp(22px, 3vw, 32px);
     margin-bottom: 20px;
 }
 
 .about-content p {
-    font-size: 18px;
+    font-size: clamp(15px, 2vw, 18px);
     line-height: 1.8;
     color: #fff;
     margin-bottom: 20px;
@@ -297,7 +301,7 @@ html, body {
     align-items: center;
     gap: 12px;
     margin: 15px 0;
-    font-size: 18px;
+    font-size: clamp(14px, 2vw, 18px);
     word-break: break-word;
 }
 
@@ -309,6 +313,7 @@ html, body {
 .about-info i {
     color: #0ef;
     font-size: 22px;
+    flex-shrink: 0;
 }
 
 .about-content .btn-box {
@@ -505,6 +510,7 @@ html, body {
 .contact form .btn-box {
     cursor: pointer;
     display: inline-block;
+    border: none;
 }
 
 /* ===== FOOTER ===== */
@@ -521,20 +527,18 @@ html, body {
     .header {
         padding: 15px 5%;
     }
-    
+
     .navbar a {
         font-size: 18px;
         margin-left: 20px;
     }
 
-    .home, .about {
-        padding: 100px 5% 50px;
-        height: auto;
+    .home {
+        padding: 110px 5% 50px;
     }
 
-    .heading {
-        font-size: 40px;
-        margin-bottom: 40px;
+    .about {
+        padding: 80px 5% 50px;
     }
 }
 
@@ -543,6 +547,7 @@ html, body {
         flex-direction: column;
         gap: 12px;
         position: relative;
+        padding: 15px 5%;
     }
 
     .navbar {
@@ -561,26 +566,16 @@ html, body {
         flex-direction: column-reverse;
         justify-content: center;
         text-align: center;
-        height: auto;
         gap: 40px;
-        padding-top: 40px;
+        padding: 30px 5% 50px;
     }
 
-    .home-content h1 {
-        font-size: 38px;
-    }
-
-    .home-content h3 {
-        font-size: 24px;
+    .home-content {
+        max-width: 100%;
     }
 
     .home-sci, .location-text {
         justify-content: center;
-    }
-
-    .home-img img, .about-img img {
-        width: 270px;
-        height: 270px;
     }
 
     .about {
@@ -591,7 +586,6 @@ html, body {
 
     .about-info p {
         justify-content: center;
-        font-size: 15px;
     }
 
     .contact form .input-box {
@@ -601,20 +595,12 @@ html, body {
 }
 
 @media (max-width: 480px) {
-    .home-content h1 {
-        font-size: 30px;
-    }
-
-    .home-content p {
-        font-size: 15px;
-    }
-
-    .home-img img, .about-img img {
-        width: 220px;
-        height: 220px;
+    .navbar a {
+        font-size: 14px;
+        margin-left: 8px;
     }
 
     .heading {
-        font-size: 32px;
+        margin-bottom: 40px;
     }
 }
