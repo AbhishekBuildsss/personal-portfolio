@@ -239,35 +239,36 @@
         <p>&copy; 2026 Abhishek Kumar Mandal. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-    <script>
-        // EmailJS Initialization
-        (function() {
-            emailjs.init("7ZFLXGJB6uyxCoFSX");
-        })();
+<script type="text/javascript">
+  // EmailJS Direct Init
+  emailjs.init("7ZFLXGJB6uyxCoFSX");
 
-        // Form Submit Event Handler
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+  document.addEventListener("DOMContentLoaded", function () {
+    const contactForm = document.getElementById("contact-form");
 
-            const submitBtn = document.getElementById('submit-btn');
-            const originalText = submitBtn.value;
-            submitBtn.value = 'Sending...';
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-            emailjs.sendForm('service_2omqzfq', 'template_s0624g8', this)
-                .then(function() {
-                    alert('Message Sent Successfully! 🚀');
-                    document.getElementById('contact-form').reset();
-                    submitBtn.value = originalText;
-                }, function(error) {
-                    alert('Failed to send message... ❌\nError: ' + JSON.stringify(error));
-                    submitBtn.value = originalText;
-                });
-        });
-    </script>
+        const submitBtn = document.getElementById("submit-btn");
+        const originalText = submitBtn.value;
+        submitBtn.value = "Sending...";
 
-    <script src="main.js"></script>
-</body>
-</html>
+        // Explicit Public Key pass kar rahe hain taki 'user_id required' error na aaye
+        emailjs.sendForm("service_2omqzfq", "template_s0624g8", this, "7ZFLXGJB6uyxCoFSX")
+          .then(function () {
+            alert("Message Sent Successfully! 🚀");
+            contactForm.reset();
+            submitBtn.value = originalText;
+          })
+          .catch(function (error) {
+            alert("Failed to send message... ❌\nError: " + JSON.stringify(error));
+            submitBtn.value = originalText;
+          });
+      });
+    }
+  });
+</script>
