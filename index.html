@@ -42,7 +42,7 @@
                 <a href="https://github.com" target="_blank" rel="noopener noreferrer" style="--i:8;" title="GitHub">
                     <i class='bx bxl-github'></i>
                 </a>
-                <!-- LeetCode (Working Code Icon Fix) -->
+                <!-- LeetCode -->
                 <a href="https://leetcode.com/u/Abhi07/" target="_blank" rel="noopener noreferrer" style="--i:9;" title="LeetCode">
                     <i class='bx bx-code-alt'></i>
                 </a>
@@ -80,7 +80,6 @@
                 (SIH) project competition among 250+ participating students.</p>
             
             <div class="about-info">
-                <!-- Clickable Email -->
                 <p>
                     <i class='bx bxs-envelope'></i> 
                     <a href="mailto:abhishekm2257527@gmail.com" style="color: #fff; text-decoration: none;">
@@ -91,7 +90,6 @@
                 <p><i class='bx bxs-phone'></i> +91 6203332718</p>
                 <p><i class='bx bxs-graduation'></i> BVCOEP, Pune (2024–2028)</p>
 
-                <!-- Clickable LeetCode -->
                 <p>
                     <i class='bx bx-code-alt'></i> 
                     <a href="https://leetcode.com/u/Abhi07/" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">
@@ -99,7 +97,6 @@
                     </a>
                 </p>
 
-                <!-- Clickable LinkedIn -->
                 <p>
                     <i class='bx bxl-linkedin'></i> 
                     <a href="https://www.linkedin.com/in/abhishek-kumar-mandal-87a877320" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">
@@ -224,23 +221,52 @@
     <!-- CONTACT -->
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
-        <form action="#">
+        <form id="contact-form">
             <div class="input-box">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
+                <input type="text" name="from_name" placeholder="Full Name" required>
+                <input type="email" name="from_email" placeholder="Email Address" required>
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Subject">
+                <input type="tel" name="mobile_number" placeholder="Mobile Number">
+                <input type="text" name="subject" placeholder="Subject" required>
             </div>
-            <textarea name="" placeholder="Your Message" cols="30" rows="10"></textarea>
-            <input type="submit" value="Send Message" class="btn-box">
+            <textarea name="message" placeholder="Your Message" cols="30" rows="10" required></textarea>
+            <input type="submit" id="submit-btn" value="Send Message" class="btn-box">
         </form>
     </section>
 
     <footer class="footer">
         <p>&copy; 2026 Abhishek Kumar Mandal. All rights reserved.</p>
     </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        // EmailJS Initialization
+        (function() {
+            emailjs.init("7ZFLXGJB6uyxCoFSX");
+        })();
+
+        // Form Submit Event Handler
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.value;
+            submitBtn.value = 'Sending...';
+
+            emailjs.sendForm('service_2omqzfq', 'template_s0624g8', this)
+                .then(function() {
+                    alert('Message Sent Successfully! 🚀');
+                    document.getElementById('contact-form').reset();
+                    submitBtn.value = originalText;
+                }, function(error) {
+                    alert('Failed to send message... ❌\nError: ' + JSON.stringify(error));
+                    submitBtn.value = originalText;
+                });
+        });
+    </script>
 
     <script src="main.js"></script>
 </body>
